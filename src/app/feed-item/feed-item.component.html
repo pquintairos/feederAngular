@@ -1,0 +1,28 @@
+<div class="profile">
+  <div class="picture"><img [src]="item.image.profile"></div>
+  <div class="username">{{item.username}}</div>
+</div>
+<div class="post">
+  <div class="post-image"><img [src]="item.image.post"></div>
+  <div class="post-caption">{{item.caption}}</div>
+  <div class="stats">
+    <div>Stars: {{item.stats.star}}</div>
+    <div>Follow: {{item.stats.follow}}</div>
+    <div>Views: {{item.stats.views}}</div>
+  </div>
+
+  <div *ngIf="item.postComments" class="comments-wrapper">
+    Comments
+    <div *ngFor="let commentItem of item.postComments">
+        <div class="profileComment">
+          <div class="usernameComment">{{commentItem.username}}</div>
+          <div class="pictureComment"><img [src]="commentItem.image.profile"></div>
+        </div>
+        <div *ngIf="commentItem.comments" class="commentItem">
+          <div *ngFor="let comment of commentItem.comments" class="comment">
+            <div>{{comment.text}}</div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
